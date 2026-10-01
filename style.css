@@ -1,0 +1,63 @@
+/* =========================================
+   1. MẶC ĐỊNH (Chế độ xem di động - Mobile View)
+   ========================================= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Đảm bảo khung chứa sử dụng Flexbox hoặc Block linh hoạt */
+.container {
+    display: flex;
+    flex-direction: column; /* Mặc định trên di động: các div xếp dọc (một div ngang/chiều dọc) */
+    gap: 20px;
+}
+
+/* Các div mặc định trên di động chiếm toàn bộ chiều rộng */
+.content-div {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+/* Hình ảnh đáp ứng cơ bản */
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================================
+   2. TRUY VẤN #1: Chế độ xem máy tính bảng (Tablet View)
+   Kích hoạt ở 772px trở lên
+   ========================================= */
+@media screen and (min-width: 772px) {
+    .container {
+        flex-direction: row;       /* Chuyển sang bố cục ngang */
+        flex-wrap: wrap;           /* Cho phép xuống dòng nếu hết chỗ */
+        justify-content: space-between;
+    }
+
+    .content-div {
+        width: 45%;                /* Div bằng 45% chiều rộng khung nhìn */
+    }
+
+    img {
+        max-height: 30vh;          /* Hình ảnh không quá 30% chiều cao của khung nhìn */
+        object-fit: cover;         /* Giữ tỉ lệ hình ảnh đẹp không bị méo */
+    }
+}
+
+
+/* =========================================
+   3. TRUY VẤN #2: Chế độ xem màn hình lớn (Large Screen View)
+   Kích hoạt ở 998px trở lên
+   ========================================= */
+@media screen and (min-width: 998px) {
+    .content-div {
+        width: 30%;                /* Div bằng 30% chiều rộng khung nhìn (3 div nằm trên một hàng) */
+    }
+}
